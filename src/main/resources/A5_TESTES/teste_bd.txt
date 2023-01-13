@@ -1,0 +1,94 @@
+Teste Banco de Dados
+
+Banco de Dados PostgreSQL
+
+3. Inserir(Insert)
+insert into pessoa(nome, data_nascimento)values('Dalmo Facuri', '05/10/1971')
+
+3. Atualizar(Update)
+update pessoa set nome = 'Manoel Facuri', data_nascimento = '10/10/1981' where id_pessoa = 1
+
+
+4. select pessoa.nome,endereco.logradouro, endereco.cidade, endereco.uf, endereco.bairro,    pessoa_endereco.numero, pessoa_endereco.complemento
+  from pessoa
+  inner join endereco
+  on pessoa.id_pessoa = endereco.idpess
+  inner join pessoa_endereco
+  on pessoa.id_pessoa = pessoa_endereco.idpes
+
+Tabelas
+
+Tabela pessoa
+(
+  
+id_pessoa serial NOT NULL,
+  
+nome character varying(30) NOT NULL,
+  
+data_nascimento character varying(30),
+  
+CONSTRAINT pk_pessoa PRIMARY KEY (id_pessoa )
+)
+
+Tabela endereco
+(
+  
+idcep serial NOT NULL,
+  
+logradouro character varying(30) NOT NULL,
+  
+cidade character varying(30),
+  
+uf character varying(10),
+  
+bairro character varying(30),
+  
+idpess integer NOT NULL,
+  
+CONSTRAINT pk_endereco PRIMARY KEY (idcep ),
+  
+CONSTRAINT fk_cod_pes FOREIGN KEY (idpess)
+REFERENCES pessoa(id_pessoa) 
+)
+
+CREATE TABLE pessoa_endereco
+(
+  
+idpes_end serial NOT NULL,
+  
+numero character varying(30) NOT NULL,
+  
+complemento character varying(30),
+  
+idpes integer NOT NULL,
+  
+idce integer NOT NULL,
+  
+CONSTRAINT pkpesend PRIMARY KEY (idpes_end ),
+  
+CONSTRAINT fk_cod_pessos FOREIGN KEY (idpes)
+REFERENCES pessoa (id_pessoa),
+  
+CONSTRAINT fk_ende FOREIGN KEY (idce)
+REFERENCES endereco (idcep)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

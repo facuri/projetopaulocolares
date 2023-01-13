@@ -1,0 +1,28 @@
+algoritmo "media"
+var
+   nota, soma, media, mostdif: real
+   i, cont: inteiro
+Inicio
+      soma <- 0
+      cont <- 0
+      para i <- 1 ate 3 faca
+          escreva("Digite a ", i , " nota: ")
+          leia(nota)
+          soma <- soma + nota
+          cont <- cont + 1
+     fimpara
+     media <- soma / cont
+     se(media <= 4.9) entao
+        mostdif <- (10 - media)
+        escreva("Aluno em recuperacao", média: ", media, 
+                "para atingir média, nota: ", mostdif)
+     senao se(media <= 6.9) entao
+          mostdif <- (10 - m)
+          escreva("Aluno em prova final, média: ", media, 
+                  "para atingir a média, nota: ", mostdif)
+     senao se(media <= 10) entao
+         escreva("Aluno aprovado parabéns, média: ", media)
+     fimse
+    fimse
+   fimse
+fimalgoritmo
